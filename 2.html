@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #search-container {
+      width: 400px;
+      margin: 100px auto;
+      text-align: center;
+    }
+
+    #search-form {
+      display: flex;
+      justify-content: center;
+    }
+
+    #search-input {
+      width: 300px;
+      padding: 5px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 2px;
+    }
+
+    #search-button {
+      width: 100px;
+      margin-left: 5px;
+      font-size: 16px;
+      border: 1px solid #0f9d58;
+      background-color: #0f9d58;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="search-container">
+    <form id="search-form" onsubmit="handleSearch(event)">
+      <input type="text" id="search-input" name="q" placeholder="Search Google">
+      <button type="submit" id="search-button">Search</button>
+    </form>
+  </div>
+
+  <script>
+    function handleSearch(event) {
+      event.preventDefault();
+      const searchInput = document.getElementById('search-input');
+      const query = searchInput.value.toLowerCase().trim();
+
+      if (query === 'youtube') {
+        window.location.href = 'https://www.youtube.com/';
+      } else {
+        // Perform a regular Google search or take other actions
+        console.log('Performing Google search for:', query);
+      }
+    }
+  </script>
+</body>
+</html>
