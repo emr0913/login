@@ -1,64 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Google</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    #search-container {
-      width: 400px;
-      margin: 100px auto;
-      text-align: center;
-    }
-
-    #search-form {
-      display: flex;
-      justify-content: center;
-    }
-
-    #search-input {
-      width: 300px;
-      padding: 5px;
-      font-size: 16px;
-      border: 1px solid #ddd;
-      border-radius: 2px;
-    }
-
-    #search-button {
-      width: 100px;
-      margin-left: 5px;
-      font-size: 16px;
-      border: 1px solid #0f9d58;
-      background-color: #0f9d58;
-      color: #fff;
-      cursor: pointer;
-    }
-  </style>
+  <title>Website Redirect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
 <body>
-  <div id="search-container">
-    <form id="search-form" onsubmit="handleSearch(event)">
-      <input type="text" id="search-input" name="q" placeholder="Search Google">
-      <button type="submit" id="search-button">Search</button>
+  <div class="container">
+    <h1 class="mt-4">Website Redirect</h1>
+    <form>
+      <div class="mb-3">
+        <label for="website" class="form-label">Type a website name:</label>
+        <input type="text" id="website" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Go</button>
     </form>
   </div>
 
   <script>
-    function handleSearch(event) {
+    document.querySelector('form').addEventListener('submit', function(event) {
       event.preventDefault();
-      const searchInput = document.getElementById('search-input');
-      const query = searchInput.value.toLowerCase().trim();
-
-      if (query === 'youtube') {
-        window.location.href = 'https://www.youtube.com/';
-        
-      } else {
-        // Perform a regular Google search or take other actions
-        console.log('Performing Google search for:', query);
+      var websiteInput = document.getElementById('website').value.toLowerCase();
+      switch (websiteInput) {
+        case 'youtube':
+          window.location.href = 'https://www.youtube.com';
+          break;
+        case 'roblox':
+          window.location.href = 'https://www.roblox.com';
+          break;
+          case 'google':
+          window.location.href = 'https://youareanidiot.cc/';
+          break;
+        default:
+          alert("Website not found.");
       }
-    }
+    });
   </script>
 </body>
 </html>
