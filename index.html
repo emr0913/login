@@ -1,69 +1,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+  <title>Google Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      margin: 0;
-      padding: 0;
+      background-color: #f1f1f1;
     }
 
     .container {
-      width: 300px;
-      margin: 100px auto;
-      background-color: #fff;
+      max-width: 400px;
+      margin: 0 auto;
+      margin-top: 150px;
       padding: 20px;
+      background-color: #fff;
       border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
     }
 
-    .container h2 {
+    .google-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .google-icon {
+      font-size: 36px;
+      margin-right: 10px;
+    }
+
+    .made-by {
       text-align: center;
-      margin-bottom: 20px;
+      font-size: 12px;
+      margin-top: 20px;
     }
 
     .form-group {
       margin-bottom: 20px;
     }
 
-    .form-group label {
-      display: block;
+    label {
       font-weight: bold;
     }
 
-    .form-group input {
-      width: 100%;
-      padding: 5px;
-      font-size: 16px;
-      border: 1px solid #ddd;
-      border-radius: 2px;
+    .form-control {
+      border-radius: 3px;
     }
 
-    .form-group input[type="submit"] {
-      background-color: #4caf50;
-      color: #fff;
-      cursor: pointer;
+    .btn-primary {
+      width: 100%;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Login</h2>
-    <form action="https://emr0913.github.io/login/2.html" target="_blank">
+    <div class="google-logo">
+      <i class="material-icons google-icon">account_circle</i>
+      <h2>Google Login</h2>
+    </div>
+    <div id="loginSection">
+      <button class="btn btn-primary" onclick="showLoginForm()">Login</button>
+      <button class="btn btn-primary" onclick="showSignUpForm()">Sign Up</button>
+    </div>
+    <form id="loginForm" style="display: none;">
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" class="form-control" required>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" class="form-control" required>
       </div>
-      <div class="form-group">
-        <input type="submit" value="Login">
-      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
     </form>
+    <form id="signUpForm" style="display: none;">
+      <div class="form-group">
+        <label for="newEmail">Email:</label>
+        <input type="email" id="newEmail" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+    <p class="made-by">Made by emr09</p>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showLoginForm() {
+      document.getElementById("loginSection").style.display = "none";
+      document.getElementById("loginForm").style.display = "block";
+    }
+
+    function showSignUpForm() {
+      document.getElementById("loginSection").style.display = "none";
+      document.getElementById("signUpForm").style.display = "block";
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var email = document.getElementById("email").value.trim();
+      var password = document.getElementById("password").value.trim();
+      
+      // Check email and password
+      if (email === "emr09@gmail.com" && password === "emr09") {
+        // Login successful, redirect to Google.com
+        window.location.href = "https://emr0913.github.io/login/2.html";
+      } else {
+        // Incorrect email or password, show an alert
+        alert("Incorrect email or password. Please try again.");
+      }
+    });
+
+    document.getElementById("signUpForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var newEmail = document.getElementById("newEmail").value.trim();
+      var newPassword = document.getElementById("newPassword").value.trim();
+      
+      // Add your sign-up logic here
+      
+      alert("Account created successfully!");
+    });
+  </script>
 </body>
 </html>
